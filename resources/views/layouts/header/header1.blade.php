@@ -1,3 +1,18 @@
+<script>
+  $(document).ready(function() {
+    
+  $('#categoria').on('click',function() {
+    $('#categoria-menu').toggleClass('open');
+    });
+  $('#btn-corazon').click(function(){
+      $('#corazon').toggleClass('fa-heart-o');
+    });
+    $('#btn-bell').click(function(){
+      $('#bell').toggleClass('fa-bell-o');
+    });
+  });
+</script>
+
 <div id="app">
   <nav class="navbar navbar-default navbar-static-top app-nav">
     <div class="container">
@@ -19,38 +34,43 @@
         <ul class="nav navbar-nav navbar-right">
           @if (Auth::guest())
           <li>
-            <div class="input-group margin" style="width: 200px; height: 10px;" >
-              <input type="text" class="form-control" style="border-radius: 20px 0px 0px 20px">
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-warning btn-flat"> <i class="fa fa-search"></i></button>
-              </span>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li id="categoria-menu" class="dropdown mega-dropdown " >                
+              </li>
+            </ul>
           </li>
-          <li><a id="app-btn-nav" class="login text-white" style="color:white;" href="#">Login</a></li>
-          <li><a id="app-btn-nav" class=" text-white" style="color:white;" href="{{ route('register') }}">Register</a></li>
-          @else
-          
           <li>
-            <div class="input-group margin" style="width: 200px; height: 10px;" >
-              <input type="text" class="form-control" style="border-radius: 20px 0px 0px 20px">
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-warning btn-flat"> <i class="fa fa-search"></i> </button>
-              </span>
-            </div>
+            <a id="app-btn-nav" class="login text-white input-buscar" style="color: white" data-toggle="tooltip" data-placement="left" title="login" href="#"> Login</a>
           </li>
+          <li>
+            <a id="app-btn-nav" class=" text-white input-buscar" style="color: white" href="{{ route('register') }}">Register</a>
+          </li>
+          @else
             @if(Auth::user()->rol==1)
-          <li class="dropdown messages-menu">
-            @include('layouts.decoraciones.menu')
-          </li> 
-          
+              <li>
+                <ul class="nav navbar-nav navbar-right">
+                  <li id="categoria-menu" class="dropdown mega-dropdown " >
+                    
+                    @include('layouts.decoraciones.barraBuscar')
+                    @include('layouts.decoraciones.lista-menu-abajo')
+                </li>
+              </ul>
+              </li>
+              <li>
+                <a class=" text-white input-buscar" id="btn-corazon" style="color: white" href="#"><i id="corazon" class="fa fa-heart "></i></a>
+              </li>
+              <li class="dropdown messages-menu">
+                @include('layouts.decoraciones.menu')
+              </li> 
             @endif
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown mega-dropdown user user-menu">
-              @include('layouts.decoraciones.menuUser')
-            </li>
-          </ul>
-        </li>
-        @endif
+             <li>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown mega-dropdown user user-menu">
+                  @include('layouts.decoraciones.menuUser')
+                </li>
+              </ul>
+              </li>
+          @endif
         </ul>
       </div>
     </div>

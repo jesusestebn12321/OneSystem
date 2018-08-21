@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-
-
 use App\ProductoImagen;
 use App\ProductoUser;
 use App\ComprarUser;
@@ -14,8 +11,7 @@ use App\Producto;
 use App\Imagen;
 use App\Post;
 
-class ProductoUserController extends Controller
-{
+class ProductoUserController extends Controller{
     /**
      * Display a listing of the resource.
      *
@@ -54,17 +50,15 @@ class ProductoUserController extends Controller
         $post= Post::all();
         return view('Productos.create', compact('post','producto','categoria','imagen'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $data)
-    {
-        //
-        // dd($data->file('imagen'));
+    public function store(Request $data){
+
+        // dd($data->file('imagenes1'));
         $producto= new Producto();
         $producto->nombre=$data->nombre;
         $producto->descripcion=$data->descripcion;
@@ -72,17 +66,16 @@ class ProductoUserController extends Controller
         $producto->categorias_id=$data->categoria;
         $producto->precio=$data->precio;
         $producto->save();
-
-        // dd($data);
-        for($i=0;  $i<$data->imagenes;$i++){
-            $product = new ProductoImagen();
+    // dd(sizeof($data->imagenes)+1);
+        for($i=1;$i<=sizeof($data->imagenes)+1;$i++){
+            $product= new ProductoImagen();
             $imagenF=new Imagen();
                
                 if ($data->file('imagenes'.$i)) {
                     $file = $data->file('imagenes'.$i);
                     $name = 'Producto_' . time() . '.' .  $data->file('imagenes'.$i)->getClientOriginalExtension();
-                    $path = public_path() . '/uploads/images/products';
-                    $file->move($path, $name);
+                    $path = public_path() . '/uploads/imagenes/productos';
+                    $file->move($path,$name);
                 }else {
                     $name='name es una variable vacia.exe';
                 } 
@@ -117,8 +110,9 @@ class ProductoUserController extends Controller
     public function show($id){
         //
         $producto= ProductoUser::find($id);
+        $categoria= Categoria::all();
         $post= Post::all();
-        return view('Productos.show', compact('producto','post'));
+        return view('Productos.show', compact('producto','categoria','post'));
     }
 
 
@@ -155,6 +149,11 @@ class ProductoUserController extends Controller
     {
         //
         $producto= ProductoUser::find($id);
+        if($producto->post){
+            for ($x=0;$x<$producto->post;$x++){ 
+                $post=Post::destroy('producto_user_id','=',$id);
+            }
+        }
         $producto->delete();
         $message=$producto ? 'producto Eliminado':'Proceso falliido';
         return redirect()->route('manageArticulos', compact('message') );

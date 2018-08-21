@@ -16,8 +16,10 @@
 			<img class="img-rounded" id="imagenSlider" src="{{ asset('plugins/bootstrap/img/slider3.jpg') }}" alt="imagenes">
 		</div>
 	</div>
-	<a href="#Slider" class="carousel-control left" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
-	<a href="#Slider" class="carousel-control right" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+	<div >
+		<a href="#Slider" class="carousel-control left  " data-slide="prev" ><span  class="fa fa-chevron-left"></span></a>
+		<a href="#Slider" class="carousel-control right " data-slide="next" ><span  class="fa fa-chevron-right"></span></a>
+	</div>
 </div>
 
 

@@ -23,7 +23,8 @@ class CreateComprarUsersTable extends Migration
 
             $table->integer('producto_user_id')->unsigned();
             $table->foreign('producto_user_id')->references('id')
-                     ->on('producto_users');
+                     ->on('producto_users')
+                     ->onDelete('cascade');
 
 
             $table->timestamps();

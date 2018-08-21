@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProductoUser;
 use App\ComprarUser;
+use App\Categoria;
 use App\Post;
 
 class MensajesController extends Controller
@@ -12,8 +13,9 @@ class MensajesController extends Controller
     public function index(){
         $post= Post::all();
         $producto= ProductoUser::all();
+        $categoria= Categoria::all();
         $carrito= ComprarUser::all();
-        return view('Mensajes.index', compact('post','producto','carrito'));
+        return view('Mensajes.index', compact('post','categoria','producto','carrito'));
     }
 
     public function status($id){

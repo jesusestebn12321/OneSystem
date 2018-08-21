@@ -3,7 +3,7 @@
 <script>
 	$('#activar').on('click', function(){
 		var valor= $('#activar').val();
-	swal("Articulo Activado!", "Su articulo se activado exitosamente!"+ valor, "success")
+		swal("Articulo Activado!", "Su articulo se activado exitosamente!"+ valor, "success")
 
 	});
 </script>
@@ -51,75 +51,79 @@
 				</div>
 				@if(count($producto)>0 )  
 
-				<div class="table-responsive">
-					<table  class="table table-striped table-hover">
-						<thead>
-							<tr>
-								<th class="col-md-2">Nombre</th>
-								<th class="col-md-2">Categoria</th>
-								<th class="col-md-2">Decripcion</th>
-								<th class="col-md-2">Stock</th>
-								<th class="col-md-2">Precio</th>
-								<th class="col-md-2">Fecha de Creacion</th>
-								<th class="col-md-2">Status</th>
-								<th class="col-md-2"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php $i=0 ?>
-							@foreach($producto as $productos)    
-								@if($productos->act == 0)
-									@if($productos->user_id == Auth::user()->id)
-										<?php $i++; ?>	
-										<tr>
-											<td>{{$productos->productoImagen->producto->nombre}}</td>
-											<td>{{$productos->productoImagen->producto->categoria->nombre}}</td>
-											<td>{{$productos->productoImagen->producto->descripcion}}</td>
-											<td>{{$productos->productoImagen->producto->stock}}</td>
-											<td>{{$productos->productoImagen->producto->precio}}</td>
-											<td>{{$productos->productoImagen->producto->created_at}}</td>
-											<td>@if($productos->act==0) <i class="badge">Pausado</i>@endif</td>
-
-											<td>
-												<div class="col-md-6 col-xs-6">
-
-													<a href="{{route('manageProducto-edit', $productos->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fa fa-edit"></i></a>
-
-													<a href="{{route('manageProducto-destroy', $productos->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Eliminar"><i class="fa fa-trash"></i></a>
-
-													<a href="{{route('manageArticulo-activar', $productos->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Activar" id="activar"><i class="fa fa-play"></i></a>
-
-													<a href="{{route('manageProducto-show', $productos->id)}}" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Ver"><i class="fa fa-eye"></i></a>
-												</div>
-											</td>
-										</tr>
-									@endif
-								@endif
-							@endforeach
+				<div>
+					<?php $i=0 ?>
+					@foreach($producto as $productos)    
+					@if($productos->act == 0)
+					@if($productos->user_id == Auth::user()->id)
+					<?php $i++; ?>	
+					
+					<div class="col-xs-12 col-sm-3 app-letra " id="imagen2">
+						<div class="thumbnail">
+							<div class="carousel slide thumbnail carritoRadius" id="miSlider1" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="item active app-div-img"  style="border-radius: 100%; border:0px;">
+										<img class="img-responsive img-rounded"  style="border-radius: 100%; border:0px;" id="carrito" src="{{asset('uploads/imagenes/productos/imagen_1.jpg')}}" alt="Producto">
+									</div>
+									@for($j=1; $j<sizeof($productos->productoImagen->producto->productoImagen);$j++)
+									<div class="item app-div-img" style="border-radius: 100%; border:0px;">
+										<img class="img-responsive img-rounded" style="border-radius: 100%;" id="carrito" src="{{asset('uploads/imagenes/productos/'.$productos->productoImagen->producto->productoImagen[$j]->imagen->imagen)}}" alt="Producto">
+									</div>
+									@endfor
+								</div>
+							</div>
+							<div class="caption">
+								<h4 id="h4titulo">{{$productos->productoImagen->producto->nombre}}</h4>
+								<p id="letraP">
+									<br>Descripcion: <span class="app-resaltar3">{{$productos->productoImagen->producto->descripcion}}</span>
+									<br>Categoria: <span class="app-resaltar3">{{$productos->productoImagen->producto->categoria->nombre}}</span>
+									<br>Precio: <span class="app-resaltar3">{{$productos->productoImagen->producto->precio}}</span></p>
+									<div class="row">
+										<div class="col-lg-6">
+											<a href="{{route('manageProducto-edit', $productos->id)}}" class="btn btn-danger btn-block" data-toggle="tooltip" data-placement="left" title="Editar"><i class="fa fa-edit"></i></a>
+										</div>
+										<div class="col-lg-6">
+											<a href="{{route('manageProducto-destroy', $productos->id)}}" id="borrar" class="btn btn-danger btn-block" data-toggle="tooltip" data-placement="left" title="Eliminar"><i class="fa fa-trash"></i></a>
+										</div>
+										
+									</div>
+									<div class="row" style="margin-top: 2px;">
+										<div class="col-lg-6">
+											<a href="{{route('manageArticulo-activar', $productos->id)}}" value='{{$productos->productoImagen->producto->nombre}}' id="activar"  class="btn btn-danger btn-block" data-toggle="tooltip" data-placement="left" title="Activar"><i class="fa fa-play"></i></a>
+										</div>
+										<div class="col-lg-6">
+											<a href="{{route('manageProducto-show', $productos->id)}}" class="btn btn-danger btn-block" data-toggle="tooltip" data-placement="left" title="Ver"><i class="fa fa-eye"></i></a>
+										</div>
+										
+									</div>
+								</div>
+							</div>
 						</div>
-					</tbody>
-				</table>
-			</div>
-				@if($i==0)
+						@endif
+						@endif
+						@endforeach
+						
+					</div>
+					@if($i==0)
 					<div class="alert alert-block alert-info" style="margin-top: 44px;">
 						<i class="fa fa-exclamation-triangle fa-1" style="float:left; margin-right: 16px;"></i>
 						<p class="margin-bottom-10">
 							No existen Productos Pausados.
 						</p>
 					</div>
-				@endif
-			@else()
-			<div class="alert alert-block alert-info" style="margin-top: 44px;">
-				<i class="fa fa-exclamation-triangle fa-1" style="float:left; margin-right: 16px;"></i>
-				<p class="margin-bottom-10">
-					No existen items registrados en el sistema.
-				</p>
+					@endif
+					@else()
+					<div class="alert alert-block alert-info" style="margin-top: 44px;">
+						<i class="fa fa-exclamation-triangle fa-1" style="float:left; margin-right: 16px;"></i>
+						<p class="margin-bottom-10">
+							No existen items registrados en el sistema.
+						</p>
+					</div>
+					@endif
+				</div>
 			</div>
-			@endif
 		</div>
 	</div>
-</div>
-</div>
 </div>
 
 

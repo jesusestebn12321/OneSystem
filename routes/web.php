@@ -12,13 +12,9 @@
 */
 
 Route::get('/', function () {
-	
-	$post= App\Post::all();
-	$producto= App\ProductoUser::all();
-	$categoria= App\Categoria::all();
-    return view('home',compact('post','producto','categoria'));
+    return view('welcome');
 });
-Route::get('/Home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
@@ -33,16 +29,17 @@ Route::group(['middleware'=>['authen','rol'],'rol'=>['1']],function(){
 	//--------------------------------------------------- CRUD Productos -----------------------------------------------------//  
 
 	Route::get('/Products/MyArticles/Index',['as'=>'manageArticulos', 'uses'=>'ProductoUserController@index']);
-	Route::get('/Products/MyArticles/Store',['as'=>'manageProducto-store', 'uses'=>'ProductoUserController@store']);
+	Route::post('/Products/MyArticles/Store',['as'=>'manageProducto-store', 'uses'=>'ProductoUserController@store']);
 	Route::get('/Products/MyArticles/Destroy/{id}',['as'=>'manageProducto-destroy', 'uses'=>'ProductoUserController@destroy']);
 	
 
-	Route::get('/Products/MyArticles/Show/{id}',['as'=>'manageProducto-show', 'uses'=>'ProductoUserController@show']);
+	Route::get('/Products/Articles/Show/{id}',['as'=>'manageProducto-show', 'uses'=>'ProductoUserController@show']);
 	
 	// Route::get('/Home/Producto/Show/{id}',['as'=>'manageProducto-ver', 'uses'=>'ProductoImagenController@show']);
 	
 
-	Route::get('/Products/MyArticles/Create',['as'=>'manageProducto-create', 'uses'=>'ProductoImagenController@create']);
+	Route::get('/Products/MyArticles/Create',['as'=>'manageProducto-create', 'uses'=>'ProductoUserController@create']);
+
 	Route::get('/Products/MyArticles/Edit/{id}',['as'=>'manageProducto-edit', 'uses'=>'ProductoController@edit']);
 	Route::get('/Products/MyArticles/Update/{id}',['as'=>'manageProducto-update', 'uses'=>'ProductoController@update']);
 	
@@ -67,7 +64,7 @@ Route::group(['middleware'=>['authen','rol'],'rol'=>['1']],function(){
 	//---------------------------------------------- fin Mensajes ----------------------------------------------------------//
 
 	//----------------------------------------------- Configuraciones ----------------------------------------------------------//
-	Route::get('/Productos/Perfile/Config/Index',['as'=>'manageConfig', 'uses'=>'Auth\ConfigAuthController@index']);
+	Route::get('/Perfile/Config/Index',['as'=>'manageConfig', 'uses'=>'Auth\ConfigAuthController@index']);
 
 
 	//---------------------------------------------- fin Configuraciones ----------------------------------------------------------//

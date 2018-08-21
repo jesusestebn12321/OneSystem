@@ -10,7 +10,7 @@ $(".add-imagen").click(function(e){
             var suma = (parseInt(imagen)+parseInt(unidad));
             $.each(document.querySelectorAll("#data tbody"), function (index, val) {
                 $(val).append("<tr>" +
-                    "<td><input type='file' name='imagenes"+suma+"' value='' class='form-control' required ></td>" +
+                    "<td><input type='file' name='imagenes"+suma+"' value='' class='form-control' required readonly></td>" +
                     "<td><button type='button' class='btn btn-danger button_eliminar_producto'> <i class='fa fa-remove'></i> </button></td></tr>");
             });
             $("#imagenes").val(suma);
@@ -38,7 +38,7 @@ $(".add-imagen").click(function(e){
 			<div class="box-header with-border">
 				<h2 class="box-title">¡VENDELO YA!</h2>
 			</div>
-			<form action="{{route('manageProducto-store')}}" enctype="multipart/form-data" class="form-group">
+			<form action="{{route('manageProducto-store')}}" method="POST" enctype="multipart/form-data" class="form-group">
 				{{ csrf_field() }}
 				<input id="user_id" type="hidden" name="user_id" value="{{Auth::user()->id}}" required>
 				<input id="act" type="hidden" name="act" value="1" required>

@@ -26,7 +26,7 @@ class CreateProductoUsersTable extends Migration
                      ->on('producto_imagenes')
                      ->onDelete('cascade');
 
-             $table->integer('act');
+            $table->integer('act');
             $table->timestamps();
         });
     }

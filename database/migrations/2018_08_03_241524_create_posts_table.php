@@ -21,14 +21,15 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')
                      ->on('users')
                      ->onDelete('cascade');
+            
+            $table->integer('producto_user_id')->unsigned();
+            $table->foreign('producto_user_id')->references('id')
+                     ->on('producto_users')
+                     ->onDelete('cascade');
+            
             $table->string('post');
             $table->integer('status');
 
-            $table->integer('producto_user_id')->unsigned();
-            $table->foreign('producto_user_id')->references('id')
-                     ->on('producto_users')->onDelete('cascade');
-            
-            
             $table->timestamps();
         
         });

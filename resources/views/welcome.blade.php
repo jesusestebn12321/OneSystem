@@ -40,73 +40,14 @@
 
                     <div class="container-fluid">
                         <div class="row ">
-                                @include('layouts.slider.sliderProducto')
+                                {{-- @include('layouts.slider.sliderProducto') --}}
                         </div>
                     </div>
                 </section>  
             </div>
 
             
-                <section class="app-section">
-                    <div class="container-fluid app-titulo2">   
-                        <i class="app-fa-categoria app-icon fa fa-table"></i>
-                        <h2 id="app-titulo" >CATEGORIAS</h2>
-                        <p><b>Selecciona tus productos por categorias</b></p><hr>
-                    </div>
-                        <div class="row">
-                            <div class="container">
-                                <div id="carousel-reviews" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            @for($r=0;  $r<6; $r++ )
-                                            <?php $i=0;?>
-                                            @foreach($categoria[$r]->productos as $c)
-                                            <?php $i++;?>
-                                            @endforeach
-                                            @if($i!=0)
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="info-box bg-gray">
-                                                    <span class="info-box-icon {{$categoria[$r]->color}}"><i class="fa {{$categoria[$r]->icono}}"></i></span>
-                                                    <div class="info-box-content bg-gray">
-                                                        <h2><span class="info-box-text" style="font-family: cursive; letter-spacing: 2px;" >{{$categoria[$r]->nombre}}</span></h2>
-                                                        <span class="info-box-number">{{$i}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endif
-                                            @endfor
-                                        </div>
-                                        <div class="item">
-                                            @for($q=$r;  $q<sizeof($categoria) && $q<12 ; $q++ )
-                                            <?php $l=0;?>
-                                            @foreach($categoria[$q]->productos as $c)
-                                            <?php $l++;?>
-                                            @endforeach
-                                            @if($l!=0)
-                                            <div class="col-md-4 col-sm-6">
-                                                <div class="info-box bg-gray">
-                                                    <span class="info-box-icon {{$categoria[$q]->color}}"><i class="fa {{$categoria[$q]->icono}}"></i></span>
-                                                    <div class="info-box-content bg-gray">
-                                                        <h2><span class="info-box-text" style="font-family: cursive; letter-spacing: 2px;" >{{$categoria[$q]->nombre}}</span></h2>
-                                                        <span class="info-box-number">{{$l}}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endif
-                                            @endfor
-                                        </div>
-                                    </div>
-                                    <a class="left carousel-control" href="#carousel-reviews" role="button" data-slide="prev">
-                                        <i style="left: -40px; font-size: 30px;" class="text-black fa fa-chevron-circle-left "></i>
-                                    </a>
-                                    <a class="right carousel-control" href="#carousel-reviews" role="button" data-slide="next">
-                                        <i style="right: -40px; font-size: 30px;" class="text-black fa fa-chevron-circle-right "></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+               
             
             <section class="app-seccion3">
                 <div class="container-fluid app-titulo3">   

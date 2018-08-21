@@ -28,84 +28,83 @@
 @endfor
 @endif
 
-<div class="main-sidebar bg-black" style=" height: 100rem; position: absolute;">
+<div class="main-sidebar bg-black" style=" height: 100%; z-index: 10000; ">
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- Sidebar user panel -->
-    <div class="user-panel">
-      <div class="pull-left image">
-        <img src="{{asset('uploads/usuarios/'.Auth::user()->imagen)}}" class="img-circle" alt="User Image">
-      </div>
-    </div>
-    
-
     <ul class="sidebar-menu">
       <li class="header">
-      @if(Auth::user()->rol==1)
-        MENÚ 
-      @elseif(Auth::user()->rol==0)
-        <i class="fa fa-user-secret"></i>ADMIN 
-      @endif
-    </li>
-      @if(Auth::user()->rol==1)
-
-        <li class=" treeview">
-          <a href="{{route('manageUser-index')}}">
-            <i class="fa fa-home"></i> <span>Inicio</span>
-            <span class="pull-right-container">
-              <i class="fa pull-right"></i>
-            </span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="{{route('manageMensajes')}}">
-            <i class="fa fa-bell"></i> <span>Notificaciones
-              @if($m>0)  
-              <span class="label label-warning pull-right">{{$m}}</span></span>
-              @endif</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="{{route('manageArticulos')}}">
-            <i class="fa fa-play"></i> <span>Art Activos
-              @if($q>0)  
-                <span class="label label-info pull-right">{{$q}}</span></span>
-              @endif</span>
-          </a>
-        </li>
-        <li class="treeview">
-          <a href="{{route('manageArticuloPausado')}}">
-            <i class="fa fa-pause"></i> <span>Art Pausados @if($i>0)  
-              <span class="label label-success pull-right">{{$i}} </span></span>
-              @endif</span>
-          </a>          
-        </li>
-        <li class="treeview">
-          <a href="{{route('manageCarrito')}}">
-            <i class="fa fa-shopping-cart"></i> <span>Carrito @if($x>0)  
-              <span class="label label-danger pull-right">{{$x}} </span></span>
-              @endif</span>
-            </a>
-        </li>
-        <li class="treeview">
-          <a href="{{route('manageArticuloVendidos')}}">
-            <i class="fa fa-shopping-bag"></i> <span>Ventas @if($y>0)  
-              <span class="label label-default pull-right">{{$y}} </span></span>
-              @endif</span>
-            </a>
-        </li>
-       
-        <li class="treeview">
-          <a href="{{route('manageConfig')}}">
-            <i class="fa fa-wrench"></i> <span>Configuracion</span>
-          </a>
-        </li>
-     <li class="treeview">
-        <a href="{{route('logout')}}">
-          <i class="fa fa-power-off"></i> <span>Cerrar Seccion</span>
-        </a>
+        @if(Auth::user()->rol==1)
+          MENÚ 
+        @elseif(Auth::user()->rol==0)
+          <i class="fa fa-user-secret"></i>ADMIN 
+        @endif
       </li>
-      @endif
+        @if(Auth::user()->rol==1)
+
+          <li class=" treeview">
+            <a href="{{route('manageUser-index')}}">
+              <i class="fa fa-home"></i> <span>Inicio</span>
+              <span class="pull-right-container">
+                <i class="fa pull-right"></i>
+              </span>
+            </a>
+          </li>
+
+          <li class="treeview">
+            <a href="{{route('manageMensajes')}}">
+              <i class="fa fa-bell"></i> <span>Notificaciones
+                @if($m>0)  
+                <span class="label label-warning pull-right">{{$m}}</span></span>
+                @endif</span>
+            </a>
+          </li>
+
+          <li class="treeview">
+            <a href="{{route('manageArticulos')}}">
+              <i class="fa fa-play"></i> <span>Art Activos
+                @if($q>0)  
+                  <span class="label label-info pull-right">{{$q}}</span></span>
+                @endif</span>
+            </a>
+          </li>
+
+          <li class="treeview">
+            <a href="{{route('manageArticuloPausado')}}">
+              <i class="fa fa-pause"></i> <span>Art Pausados @if($i>0)  
+                <span class="label label-success pull-right">{{$i}}</span></span>
+                @endif</span>
+            </a>          
+          </li>
+
+          <li class="treeview">
+            <a href="{{route('manageCarrito')}}">
+              <i class="fa fa-shopping-cart"></i> <span>Carrito @if($x>0)  
+                <span class="label label-danger pull-right">{{$x}}</span></span>
+                @endif</span>
+              </a>
+          </li>
+
+          <li class="treeview">
+            <a href="{{route('manageArticuloVendidos')}}">
+              <i class="fa fa-shopping-bag"></i> <span>Ventas @if($y>0)  
+                <span class="label label-default pull-right">{{$y}}</span></span>
+                @endif</span>
+              </a>
+          </li>
+         
+          <li class="treeview">
+            <a href="{{route('manageConfig')}}">
+              <i class="fa fa-wrench"></i> <span>Configuracion</span>
+            </a>
+          </li>
+
+          <li class="treeview">
+              <a href="{{route('logout')}}">
+                <i class="fa fa-power-off"></i> <span>Cerrar Seccion</span>
+              </a>
+          </li>
+        @endif
 
       @if(Auth::user()->rol==0)
 
@@ -154,6 +153,7 @@
       @endif
     
     </ul>
+
   </section>
   <!-- /.sidebar -->
 </div>

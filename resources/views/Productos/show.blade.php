@@ -16,13 +16,13 @@
         <div class="carousel-inner ">
           <div class="item active  app-div-img">
           
-          <img class="img-responsive img-rounded" id="productos" src="{{asset('uploads/imagenes/productos/'.$producto->productoImagen->imagen->imagen)}}" alt="Producto">
+          <img class="img-responsive img-rounded" id="productos" src="{{asset('uploads/imagenes/productos/'.$producto->productoImagen->producto->productoImagen[0]->imagen->imagen)}}" alt="Producto">
         </div>   
           @for($j=1; $j<sizeof($producto->productoImagen->producto->productoImagen);$j++)
-            <div class="item  app-div-img">
-              <img class="img-responsive img-rounded" id="productos" src="{{asset('uploads/imagenes/productos/'.$producto->productoImagen->imagen->imagen)}}" alt="Producto">
+            <div class="item app-div-img"> 
+              <img class="img-responsive img-rounded" id="productos" src="{{asset('uploads/imagenes/productos/'.$producto->productoImagen->producto->productoImagen[$j]->imagen->imagen)}}" alt="Producto">
             </div>
-          @endfor
+        @endfor
         <a href="#{{$producto->id}}" class="carousel-control left" data-slide="prev"><span class="ghyphicon ghyphicon-chevron-left"></span></a>
         <a href="#{{$producto->id}}" class="carousel-control right" data-slide="next"><span class="ghyphicon ghyphicon-chevron-right"></span></a>
       </div>
@@ -45,12 +45,14 @@
         <il class="list-group-item app-precio">
           Precio<i class="fa-pull-right">{{$producto->productoImagen->producto->precio}}</i>
         </il>
+          @if(Auth::user()->id!=$producto->user_id)
         <il class="list-group-item app-precio">
           <form action="{{route('manageComprar',$producto->id)}}">
             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
             <button class="btn bnt-block btn-primary">Comprar</button>
           </form>
         </il>
+          @endif
       </ul>
     </div> 
   </div>
@@ -110,10 +112,10 @@
             </p>
           </div>
         @endif
-        <form action="{{route('managePost-create', $producto->productoImagen->id)}}" method="post">
+        <form action="{{route('managePost-create', $producto->id)}}" method="post">
          {!!csrf_field()!!}
          <input type="hidden" name="user" value="{{Auth::user()->id}}">
-         <input type="hidden" name="status" value="1">
+         <input type="hidden" name="status" value="0">
          <div class="box-footer">
           <div class="input-group">
             <input class="form-control" name='post' placeholder="Type message...">

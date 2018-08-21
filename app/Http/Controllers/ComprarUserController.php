@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProductoUser;
 use App\ComprarUser;
+use App\Categoria;
 use App\Post;
 
 class ComprarUserController extends Controller{
@@ -17,9 +18,10 @@ class ComprarUserController extends Controller{
         //
         $producto= ProductoUser::all();
         $carrito= ComprarUser::all();
+        $categoria= Categoria::all();
         $post= Post::all();
        
-        return view('status.comprados', compact('producto','carrito','post'));
+        return view('status.comprados', compact('producto','categoria','carrito','post'));
     }
     public function comprar(Request $data, $id){
         $productoUser= ProductoUser::where('id','=',$id)->first();

@@ -23,9 +23,9 @@ class CreateProductosTable extends Migration
             $table->integer('categorias_id')->unsigned();
             $table->foreign('categorias_id')->references('id')
                     ->on('categorias')
-                    ->onDelete('cascade');            
+                    ->onDelete('cascade');           
             
-            $table->float('precio');
+            $table->double('precio');
 
             $table->timestamps();
         });

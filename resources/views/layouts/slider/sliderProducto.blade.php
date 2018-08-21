@@ -1,11 +1,10 @@
-
 @for($m=0;$m<3;$m++)
 <?php  
 $a = rand(0, sizeof($producto)-1); 
 ?>
 <div class="col-xs-12 col-md-4" id="imagen1">
 	<div class="thumbnail " id="app-cajaP">
-		<div><span class="app-stock">Stock:{{$producto[$a]->productoImagen->producto->stoc}}</span></div>  
+		<div><span class="app-stock">Stock:{{$producto[$a]->productoImagen->producto->stock}}</span></div>  
 		<div class="carousel slide app-div-img " id="{{$producto[$a]->productoImagen->producto->id}}" data-ride="carousel">
 			
 			<ol class="carousel-indicators">
@@ -25,8 +24,8 @@ $a = rand(0, sizeof($producto)-1);
 				</div>
 				@endfor
 			</div>
-			<a href="#{{$producto[$a]->productoImagen->producto->id}}" class="carousel-control left" data-slide="prev"><i style="font-size: 30px;" class="fa fa-chevron-circle-left "></i></a>
-			<a href="#{{$producto[$a]->productoImagen->producto->id}}" class="carousel-control right" data-slide="next"><i style="font-size: 30px;" class="fa fa-chevron-circle-right "></i></a>
+			<a href="#{{$producto[$a]->productoImagen->producto->id}}" class="carousel-control left" data-slide="prev"><i style="left:-2px;font-size: 30px;" class="fa fa-chevron-circle-left "></i></a>
+			<a href="#{{$producto[$a]->productoImagen->producto->id}}" class="carousel-control right" data-slide="next"><i style="right:-2px;font-size: 30px;" class="fa fa-chevron-circle-right "></i></a>
 		</div>
 		<div class="caption">
 			<span class="app-titulo-precioN">{{$producto[$a]->productoImagen->producto->nombre}}</span>

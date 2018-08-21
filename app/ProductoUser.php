@@ -18,7 +18,7 @@ class ProductoUser extends Model
     }
     
     public function post(){
-    	return $this->hasMany('\App\Post','post_id');
+    	return $this->hasMany('\App\Post','producto_user_id');
     }
     public function productoComprar(){
         return $this->hasMany('\App\ComprarUser','producto_user_id');

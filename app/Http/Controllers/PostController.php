@@ -16,10 +16,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function destroy($id)
     {
         //
-        
+        $post=Post::destroy()
 
     }
 
@@ -33,14 +33,14 @@ class PostController extends Controller
     public function update(Request $data, $id)
     {
         //
-        $post= new Post();
         $producto=ProductoUser::find($id);
+        $post= new Post();
         $post->post=$data->post;
-        $post->producto_user_id=$id;
+        $post->producto_user_id= $producto->id;
         $post->user_id=$data->user;
         $post->status=$data->status;
         $post->save();
-        return redirect()->route('manageProducto-show',$producto->id)->with('producto',$producto);
+        return redirect()->route('manageProducto-show',$producto->id);
 
     }
 
