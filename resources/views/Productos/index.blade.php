@@ -21,10 +21,7 @@
 
 				<div style="margin-top: 10px;" class=" row text-center">
 					<div class="col-md-2">
-						<a href="{{route('manageProducto-create')}}
-						"  class="btn btn-warning">
-						<i class="fa fa-shopping-bag"></i> Vender un Articulo
-					</a>
+						
 				</div>
 			</div>
 		</div>
@@ -49,7 +46,7 @@
 					@endif
 				</div>
 				@if(count($producto)>0 )  
-				<div class="">
+				<div class="paginacion">
 					<?php $i=0; ?>
 					@foreach($producto as $productos)    
 					@if($productos->act == 1)
