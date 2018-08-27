@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/home', 'HomeController@index');
 
 Auth::routes();
@@ -35,7 +36,7 @@ Route::group(['middleware'=>['authen','rol'],'rol'=>['1']],function(){
 
 	Route::get('/Products/Articles/Show/{id}',['as'=>'manageProducto-show', 'uses'=>'ProductoUserController@show']);
 	
-	// Route::get('/Home/Producto/Show/{id}',['as'=>'manageProducto-ver', 'uses'=>'ProductoImagenController@show']);
+	Route::get('/Home/Producto/Search',['as'=>'manageBuscar', 'uses'=>'ProductouserController@buscar']);
 	
 
 	Route::get('/Products/MyArticles/Create',['as'=>'manageProducto-create', 'uses'=>'ProductoUserController@create']);

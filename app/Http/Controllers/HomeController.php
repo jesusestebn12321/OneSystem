@@ -27,6 +27,10 @@ class HomeController extends Controller
         $categoria=Categoria::all();
         $producto=ProductoUser::all();
         $post=Post::all();
-        return view('home',compact('post','producto','categoria'));
+        // if (Auth::user()->rol==1) {
+            return view('home',compact('post','producto','categoria'));
+        // }else{
+        //     return view('admin.index',compact('post','producto','categoria'));
+        // }
     }
 }

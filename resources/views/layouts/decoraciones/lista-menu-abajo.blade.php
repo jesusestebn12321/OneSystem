@@ -21,16 +21,8 @@
       <li class="list-group-item "><a href="#">Enlaces1</a></li>
     </ul>
   </li>
-  <li class="lista-abajo"  id="lista-enlace-hover-3">
-    <a id="lista-abajo-1" href="#">Titulo3 <i id="flecha-abajo-3" class="fa fa-chevron-down"></i></a>
-    <ul id="lista-enlace-3">
-      <li class="list-group-item bg-navy"><h2>Enlaces</h2></li>
-      <li class="list-group-item "><a href="#">Enlaces1</a></li>
-      <li class="list-group-item "><a href="#">Enlaces1</a></li>
-      <li class="list-group-item "><a href="#">Enlaces1</a></li>
-      <li class="list-group-item "><a href="#">Enlaces1</a></li>
-      <li class="list-group-item "><a href="#">Enlaces1</a></li>
-    </ul>
+  <li class="lista-abajo"  >
+    <a id="lista-abajo-1" href="{{route('manageProducto-create')}}">Vender</a>
   </li>
   <li class="lista-abajo"  id="lista-enlace-hover-4" style="border-right: 0px">
     <a id="lista-abajo-1" href="#" style="border-right: none;">Help <i id="flecha-abajo-4" class="fa fa-chevron-down"></i></a>

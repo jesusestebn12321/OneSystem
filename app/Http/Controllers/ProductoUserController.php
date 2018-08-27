@@ -114,6 +114,25 @@ class ProductoUserController extends Controller{
         $post= Post::all();
         return view('Productos.show', compact('producto','categoria','post'));
     }
+    
+    public function buscar(Request $data){
+        //
+        $producto= ProductoUser::all();
+        $categoria= Categoria::all();
+        $post= Post::all();
+        $search=Producto::where('nombre','LIKE',"%$data->buscar%");
+        if (count($producto) == 0){
+            dd($data);
+            return View('Buscar.index')
+            ->with('message', 'No hay resultados que mostrar')
+            ->with('buscar', $data->buscar);
+
+        } else{
+            return view('Buscar.index', compact('producto','categoria','post','search'))
+            ->with('producto', $producto)
+            ->with('buscar', $data->buscar);
+        }
+    }
 
 
     /**
