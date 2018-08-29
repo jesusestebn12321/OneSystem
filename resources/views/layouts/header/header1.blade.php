@@ -10,6 +10,9 @@
     $('#btn-bell').click(function(){
       $('#bell').toggleClass('fa-bell-o');
     });
+    $('#btn-carrito').click(function(){
+      $('#carro').toggleClass('fa-shopping-cart');
+    });
   });
 </script>
 
@@ -23,7 +26,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand text-white" id="app-titulo-central" href="{{ url('/') }}">
+        @if(!Auth::guest())
+          <a class="navbar-brand text-white" id="app-titulo-central" href="{{ url('/home') }}">
+        @else
+          <a class="navbar-brand text-white" id="app-titulo-central" href="{{ url('/') }}">
+        @endif
           {{ config('app.name', 'OneSystem') }}
         </a>
       </div>
@@ -59,6 +66,10 @@
               <li>
                 <a class=" text-white input-buscar" id="btn-corazon" style="color: white" href="#"><i id="corazon" class="fa fa-heart "></i></a>
               </li>
+              <li>
+                <a class="text-white input-buscar visible-sm-block" id="btn-carrito" style="color: white" href="#"><i id="carro" class="fa fa-cart-arrow-down"></i></a>
+              </li>
+        
               <li class="dropdown messages-menu">
                 @include('layouts.decoraciones.menu')
               </li> 

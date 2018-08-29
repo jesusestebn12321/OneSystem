@@ -1,4 +1,4 @@
-<div class="app-redes">
+<div class="app-redes hidden-sm">
 	<a href="https://www.facebook.com/esteban.villalta.SK8" class="icon icon-facebook" target="_black">
 		<i class="fa fa-facebook"></i> 
 	</a>

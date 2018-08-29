@@ -19,6 +19,7 @@
   <link href="{{asset('font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
   <link href="{{asset('admin-lte/dist/css/skins/_all-skins.min.css')}}" rel="stylesheet">
   <link href="{{asset('plugins/bootstrap/css/main.css')}}" rel="stylesheet">
+  <link href="{{asset('plugins/bootstrap/Alegreya')}}" rel="stylesheet">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('admin-lte/dist/css/AdminLTE.min.css')}}">
   <!-- Script -->

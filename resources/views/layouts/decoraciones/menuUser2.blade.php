@@ -4,7 +4,7 @@
 </a>
 <ul class="dropdown-menu mega-dropdown-menuUser row" id="dropdown">
  
-  <div class="col-xs-7" id="app-lista-left" style="background: url(plugins/bootstrap/img/GALAXIA.jpg) repeat;bottom: -2px;">
+  <div class="col-xs-7" id="app-lista-left" style="background: url(../plugins/bootstrap/img/GALAXIA.jpg) repeat;bottom: -2px;">
     <li>
       <div class="container-fluid contenedor-cien">
         <div class="row" id="app-div-rigth-user">

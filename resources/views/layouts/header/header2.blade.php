@@ -10,7 +10,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand text-white" id="app-titulo-central" href="{{ url('/') }}">
+			<a class="navbar-brand text-white" id="app-titulo-central" href="{{ url('/home') }}">
 				{{ config('app.name', 'OneSystem') }}
 			</a>
 		</div>
@@ -31,9 +31,9 @@
 				</li>
 
 				<li>
-					<a class=" text-white input-buscar" id="btn-corazon" style="color: white" href="#"><i id="corazon" class="fa fa-heart "></i></a>
+					<a class="text-white input-buscar" id="btn-corazon" style="color: white" href="#"><i id="corazon" class="fa fa-heart "></i></a>
 				</li>
-				
+					
 				<li class="dropdown messages-menu">
 					@include('layouts.decoraciones.menu')
 				</li> 
@@ -41,7 +41,7 @@
 				<li>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown mega-dropdown user user-menu">
-							@include('layouts.decoraciones.menuUser')
+							@include('layouts.decoraciones.menuUser2')
 						</li>
 					</ul>
 				</li>

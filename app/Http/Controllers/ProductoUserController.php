@@ -119,6 +119,7 @@ class ProductoUserController extends Controller{
         //
         $producto= ProductoUser::all();
         $categoria= Categoria::all();
+        $carrito= ComprarUser::all();
         $post= Post::all();
         $search=Producto::where('nombre','LIKE',"%$data->buscar%");
         if (count($producto) == 0){
@@ -128,7 +129,7 @@ class ProductoUserController extends Controller{
             ->with('buscar', $data->buscar);
 
         } else{
-            return view('Buscar.index', compact('producto','categoria','post','search'))
+            return view('Buscar.index', compact('producto','categoria','post','search','carrito'))
             ->with('producto', $producto)
             ->with('buscar', $data->buscar);
         }

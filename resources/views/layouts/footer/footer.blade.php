@@ -1,3 +1,4 @@
+
 <div style="background-color: rgba(0,51,108,.8);color:white; ">
     <div class="container">
         <div class="row py-4 d-flex align-items-center">
@@ -27,7 +28,7 @@
 <div class="container text-center text-md-left mt-5 " >
     <div class="row mt-3">
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <h6 class="text-uppercase font-weight-bold">{{ config('app.name', 'OneSystem') }}</h6>
+          <h6 class="text-uppercase font-weight-bold" style="font-family: '' ">{{ config('app.name', 'OneSystem') }}</h6>
           <p class="app-separador"></p>
           <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
             adipisicing elit.</p>

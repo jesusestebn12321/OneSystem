@@ -89,7 +89,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6 col-xs-12">
+          <div class="col-lg-6 col-xs-6">
             <div class="small-box bg-red">
                 <div class="inner">
                   <div class="row">
@@ -107,7 +107,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-xs-12">
+          <div class="col-lg-3 col-xs-6">
             <div class="small-box bg-yellow">
               <div class=" inner">
                 <div class="row">
