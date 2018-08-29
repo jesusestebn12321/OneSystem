@@ -181,6 +181,9 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+
+         Collective\Html\HtmlServiceProvider::class,
  
 
     ],
@@ -233,10 +236,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
 
-    /*
-     * 'Form'=>Collective\Html\FromFacade::class,
-     * 'Html'=>Collective\Html\HtmlFacade::class,
-     */ 
+    
+        'Form'=>Collective\Html\FromFacade::class,
+        'Html'=>Collective\Html\HtmlFacade::class,
+      
 
     ],
 
